@@ -6,7 +6,7 @@ import { addUser, userAuth } from "../Redux/action";
 
 export const Login = () => {
   const [user, setUser] = useState({});
-  const [dbuser, setdbUser] = useState({});
+  const [myuser, setmyUser] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuth } = useSelector((store) => store);
@@ -19,7 +19,7 @@ export const Login = () => {
         (res) => res.json()
       )
       .then((res) => {
-        setdbUser(res[0]);
+        setmyUser(res[0]);
       })
       .catch(function (error) {
          console.log(error);
@@ -55,20 +55,20 @@ export const Login = () => {
         value="Login"
         onClick={(e) => {
           handleLogin(e);
-          if (!dbuser) {
+          if (!myuser) {
             alert("user Not Found...");
             return;
           }
-          if (dbuser.username == user.username) {
-            if (dbuser.pass == user.password) {
-              if (dbuser.role === "admin") {
+          if (myuser.username == user.username) {
+            if (myuser.pass == user.password) {
+              if (myuser.role === "admin") {
                 navigate("/orders");
               } else {
                 navigate("/neworder");
               }
             }
             dispatch(userAuth(true));
-            dispatch(addUser(dbuser));
+            dispatch(addUser(myuser));
           }
         }}
       >
