@@ -1,9 +1,9 @@
 import { ADD_ORDERS, ADD_USER, USER_AUTH } from "./action";
 
 const init = {
-  isAuth: false,
-  User: {},
-  orders: []
+    User: {},
+    orders: [],
+    isAuth: false,
 };
 
 export const reducer = (store = init, { type, payload }) => {

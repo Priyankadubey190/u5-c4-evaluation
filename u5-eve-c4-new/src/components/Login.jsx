@@ -17,17 +17,12 @@ export const Login = () => {
     fetch(`http://localhost:8080/users?username=${user.username}`)
       .then(
         (res) => res.json()
-        // console.log('response:', response)
-        // handle success
-        //
       )
       .then((res) => {
-        // console.log("response:", res[0])
         setdbUser(res[0]);
       })
       .catch(function (error) {
-        // handle error
-        console.log(error);
+         console.log(error);
       });
   };
 
